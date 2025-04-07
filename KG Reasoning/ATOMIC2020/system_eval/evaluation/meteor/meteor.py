@@ -7,6 +7,7 @@ import os
 import sys
 import subprocess
 import threading
+from security import safe_command
 
 # Assumes meteor-1.5.jar is in the same directory as meteor.py.  Change as needed.
 METEOR_JAR = 'meteor-1.5.jar'
@@ -22,7 +23,7 @@ class Meteor:
                 # '-p', '0.85 0.2 0.6 0.75' # alpha beta gamma delta'',
                 # '-a', 'data/paraphrase-en.gz', '-m', 'exact stem paraphrase']
                 ]
-        self.meteor_p = subprocess.Popen(self.meteor_cmd, \
+        self.meteor_p = safe_command.run(subprocess.Popen, self.meteor_cmd, \
                 cwd=os.path.dirname(os.path.abspath(__file__)), \
                 stdin=subprocess.PIPE, \
                 stdout=subprocess.PIPE, \
