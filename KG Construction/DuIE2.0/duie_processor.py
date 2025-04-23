@@ -1,5 +1,6 @@
 import json
-import random
+import secrets
+
 data = open('datas/duie_dev.json', 'r', encoding='utf-8')
 valid  = []
 
@@ -11,7 +12,7 @@ for line in data.readlines():
     ins["spo_list"] = dict["spo_list"]
     valid.append(ins)
 
-all_list_sampled = random.sample(valid,40)
+all_list_sampled = secrets.SystemRandom().sample(valid,40)
 
 with open('datas/duie_sample.json', 'w', encoding='utf-8') as f:
     for line in all_list_sampled:

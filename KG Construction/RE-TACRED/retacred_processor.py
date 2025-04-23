@@ -1,5 +1,6 @@
 import json
-import random
+import secrets
+
 data = json.load(open('datas/retacred_test.json','r'))
 test  = []
 
@@ -18,7 +19,7 @@ for line in data:
     ins['obj_type'] = line['obj_type']
     test.append(ins)
 
-all_list_sampled = random.sample(test,40)
+all_list_sampled = secrets.SystemRandom().sample(test,40)
 
 with open('datas/retacred_sample.json', 'w') as f:
     for line in all_list_sampled:

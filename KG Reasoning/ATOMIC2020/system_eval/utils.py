@@ -2,7 +2,7 @@ import json
 import sys
 import csv
 import operator
-import random
+import secrets
 
 
 def read_csv(input_file, quotechar='"', delimiter=",", skip_header=False):
@@ -153,7 +153,7 @@ def head_based_split(data, dev_size, test_size, head_size_threshold=500, dev_hea
             remaining_heads.pop(h)
 
     while test_head_total_count < test_size:
-        h = random.sample(remaining_heads.keys(), 1)[0]
+        h = secrets.SystemRandom().sample(remaining_heads.keys(), 1)[0]
         c = remaining_heads[h]
         if c < head_size_threshold:
             test_selected_heads[h] = c
@@ -173,7 +173,7 @@ def head_based_split(data, dev_size, test_size, head_size_threshold=500, dev_hea
             remaining_heads.pop(h)
 
     while dev_head_total_count < dev_size:
-        h = random.sample(remaining_heads.keys(), 1)[0]
+        h = secrets.SystemRandom().sample(remaining_heads.keys(), 1)[0]
         c = remaining_heads[h]
         if c < head_size_threshold:
             dev_selected_heads[h] = c
