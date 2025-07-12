@@ -2,3 +2,4 @@ bert-score
 tabulate
 nltk==3.5
 numpy
+security==1.3.1
