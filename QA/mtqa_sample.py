@@ -1,6 +1,6 @@
 import os
 import json
-import random
+import secrets
 
 def statistics(hop_num: int, split: str, ):
     path = f'./MetaQA/{hop_num}-hop/qa_{split}_qtype.txt'
@@ -29,9 +29,9 @@ def sample(hop_num: int, sample_size=3, seed=1):
             ex['Question'] = line.strip().split('\t')[0]
             ex['Answer'] = line.strip().split('\t')[1].split('|')
             qtype_example[qtype].append(ex)
-    random.seed(seed)
+    secrets.SystemRandom().seed(seed)
     for k, v in qtype_example.items():
-        random.shuffle(v)
+        secrets.SystemRandom().shuffle(v)
     # sample
     sample_dict = dict()
     for k, v in qtype_example.items():

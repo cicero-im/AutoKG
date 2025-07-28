@@ -1,5 +1,6 @@
 import json
-import random
+import secrets
+
 data = open('datas/maven_valid.jsonl', 'r', encoding='utf-8')
 lines = data.readlines()
 data.close()
@@ -25,7 +26,7 @@ for line in lines:
         if len(ins["events"]) != 0:
             valid.append(ins)
 
-all_list_sampled = random.sample(valid,40)
+all_list_sampled = secrets.SystemRandom().sample(valid,40)
 
 with open('datas/maven_sample.jsonl', 'w', encoding='utf-8') as f:
     for line in all_list_sampled:

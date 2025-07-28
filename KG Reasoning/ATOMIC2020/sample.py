@@ -1,4 +1,5 @@
-import random
+import secrets
+
 w = open('sample.tsv','w')
 f2 =open("train_sample.tsv")
 f3=open("test_sample.tsv")
@@ -17,7 +18,7 @@ for i in f3.readlines():
 
 rel_set=[]
 lines =f.readlines()
-random.shuffle(lines)
+secrets.SystemRandom().shuffle(lines)
 print(lines[0])
 for line in lines:
     head,rel,tail=line.strip('\n').split('\t')

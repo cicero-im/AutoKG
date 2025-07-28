@@ -1,6 +1,6 @@
 import os
 import json
-import random
+import secrets
 
 fbqa_test_path = './FreebaseQA/FreebaseQA-eval.json'
 seed = 1
@@ -10,8 +10,8 @@ with open(fbqa_test_path, 'r') as f:
     data = json.load(f)
     questions = data["Questions"]
     # print('The number of questions in freebase_qa_test_set: ', len(questions))
-    random.seed(seed)
-    random.shuffle(questions)
+    secrets.SystemRandom().seed(seed)
+    secrets.SystemRandom().shuffle(questions)
     for i in range(sample_size):
         question = questions[i]
         sample = dict()
