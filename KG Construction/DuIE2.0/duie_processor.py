@@ -1,15 +1,15 @@
 import json
 import random
-data = open('datas/duie_dev.json', 'r', encoding='utf-8')
-valid  = []
-
-for line in data.readlines():
-    dict = json.loads(line)
-    # print(dict.keys())
-    ins = {}
-    ins['text'] = dict['text']
-    ins["spo_list"] = dict["spo_list"]
-    valid.append(ins)
+with open('datas/duie_dev.json', 'r', encoding='utf-8') as data:
+    valid  = []
+    
+    for line in data.readlines():
+        dict = json.loads(line)
+        # print(dict.keys())
+        ins = {}
+        ins['text'] = dict['text']
+        ins["spo_list"] = dict["spo_list"]
+        valid.append(ins)
 
 all_list_sampled = random.sample(valid,40)
 
