@@ -2,3 +2,5 @@ bert-score
 tabulate
 nltk==3.5
 numpy
+torch>=2.9.0 # not directly required, pinned by Snyk to avoid a vulnerability
+urllib3>=2.6.3 # not directly required, pinned by Snyk to avoid a vulnerability
